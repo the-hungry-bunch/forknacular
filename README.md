@@ -1,2 +1,2 @@
 # forknacular
-These is a example implementation(fork) for spoonacular
+This is an example implementation to query the [spoonacular API](https://spoonacular.com/food-api/docs) for educational purposes.
