@@ -1,0 +1,12 @@
+.git/
+.git
+.gitignore
+.githooks/
+log/*
+!log/.keep
+tmp/*
+tmp/pids/*
+!tmp/pids/.keep
+.dockerignore
+Dockerfile
+docker-compose.yml
