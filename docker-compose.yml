@@ -5,6 +5,8 @@ services:
     build: .
     stdin_open: true
     tty: true
+    ports:
+      - "9292:9292"
     volumes:
       - type: bind
         source: "."
