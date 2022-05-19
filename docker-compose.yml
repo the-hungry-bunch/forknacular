@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  development:
+    build: .
+    stdin_open: true
+    tty: true
+    volumes:
+      - type: bind
+        source: "."
+        target: "/forknacular"
