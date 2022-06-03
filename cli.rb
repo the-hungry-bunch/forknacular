@@ -10,7 +10,7 @@ uri = "https://api.spoonacular.com/recipes/analyze?apikey=5e0356f3b7bd454886811a
 # TODO: Reduce the recipe to a minimum. Which parts of it do we really need?
 # TODO: May we want to enable the user to enter his own recipe?
 recipe = {
-    "title": "Salty Salad",
+    title: "Salty Salad",
     "servings": 2,
     "ingredients": [
         "1 lb salad",
