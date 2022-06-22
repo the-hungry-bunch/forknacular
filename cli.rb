@@ -4,7 +4,8 @@ require 'uri'
 
 # Defining the URL we want to query
 # TODO: Remove API key from the string. Import it from the config file and use a variable instead (string interpolation).
-uri = "https://api.spoonacular.com/recipes/analyze?apiKey=5e0356f3b7bd454886811a57765cecf9"
+key = File.read("config").split[1]
+uri = "https://api.spoonacular.com/recipes/analyze?apiKey="+key
 
 # Building a recipe hash
 # TODO: Reduce the recipe to a minimum. Which parts of it do we really need?
