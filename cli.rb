@@ -3,7 +3,7 @@ require 'json'
 require 'uri'
 
 # Defining the URL we want to query
-# TODO: Remove API key from the string. Import it from the config file and use a variable instead (string interpolation).
+# TODO: access the apiKey explicitly
 key = File.read("config").split[1]
 uri = "https://api.spoonacular.com/recipes/analyze?apiKey="+key
 
