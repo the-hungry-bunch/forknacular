@@ -1,5 +1,9 @@
 require 'sinatra'
 
 get '/' do
-  'Hallo'
+  'Was ganz anderes'
+end
+
+get '/woanders' do
+  'Hallo von woanders'
 end
