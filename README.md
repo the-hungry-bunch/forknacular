@@ -12,3 +12,8 @@ Enter the container with:
 ```shell
 docker-compose run --rm development sh
 ```
+
+Start up the webserver with:
+```Shell
+docker-compose up development
+```
