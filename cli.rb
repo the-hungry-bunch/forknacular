@@ -32,3 +32,10 @@ if JSON.parse(content.body)["vegetarian"] == true
 else
     puts "🐥 Finger weg! Töte keine Tiere! 🐷"
 end
+
+def api_call
+    key = File.read("config").split[1]
+    uri = "https://api.spoonacular.com/food/trivia/random?apiKey="+key
+    content = Net::HTTP.get(URI(uri))
+    JSON.parse(content)["text"]
+end
