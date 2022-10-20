@@ -1,6 +1,7 @@
 require 'sinatra'
 require './cli'
 
+
 get '/' do
   'Was ganz anderes'
 end
@@ -10,5 +11,6 @@ get '/woanders' do
 end
 
 get '/recipe' do
-  api_call
+  input = params["text"]
+  api_call(input)
 end

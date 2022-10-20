@@ -2,6 +2,7 @@ require 'net/http'
 require 'json'
 require 'uri'
 
+=begin - code not used
 # Defining the URL we want to query
 # TODO: access the apiKey explicitly
 key = File.read("config").split[1]
@@ -32,10 +33,12 @@ if JSON.parse(content.body)["vegetarian"] == true
 else
     puts "🐥 Finger weg! Töte keine Tiere! 🐷"
 end
+=end
 
-def api_call
+def api_call(input)
+    require 'pry'; binding.pry
     key = File.read("config").split[1]
-    uri = "https://api.spoonacular.com/food/trivia/random?apiKey="+key
+    uri = "https://api.spoonacular.com/food/converse?apiKey="+key+"&text="+input
     content = Net::HTTP.get(URI(uri))
-    JSON.parse(content)["text"]
+    response = JSON.parse(content)["answerText"]
 end
