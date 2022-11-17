@@ -12,5 +12,6 @@ end
 
 get '/recipe' do
   input = params["text"]
-  api_call(input)
+  output = api_call(input)
+  erb :index, :locals => {:wineText => output}
 end

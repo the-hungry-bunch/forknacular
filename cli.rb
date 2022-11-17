@@ -36,9 +36,8 @@ end
 =end
 
 def api_call(input)
-    require 'pry'; binding.pry
     key = File.read("config").split[1]
-    uri = "https://api.spoonacular.com/food/converse?apiKey="+key+"&text="+input
+    uri = "https://api.spoonacular.com/food/wine/pairing?food="+input+"&apiKey="+key
     content = Net::HTTP.get(URI(uri))
-    response = JSON.parse(content)["answerText"]
+    response = JSON.parse(content)["pairingText"]
 end
