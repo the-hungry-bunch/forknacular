@@ -41,3 +41,33 @@ def api_call(input)
     content = Net::HTTP.get(URI(uri))
     response = JSON.parse(content)["pairingText"]
 end
+
+
+def foodwarning()
+    uri = URI.parse("https://megov.bayern.de/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged")
+    header = {'Content-Type': 'application/json'}
+    body = {
+        food: {
+        rows: 10,
+        sort: "publishedDate desc, title asc",
+        start: 5,
+        fq: [
+            "publishedDate > 1630067654000"
+            ]
+            }
+        }
+    # Create the HTTP objects
+    http = Net::HTTP.new(uri.host, uri.port)
+    request = Net::HTTP::Post.new(uri.request_uri, header)
+    request.body = body.to_json
+    # Send the request
+    content = http.request(request)
+    require 'pry'; binding.pry
+    response = JSON.parse(content)["pairingText"]
+end
+
+
+
+
+
+
