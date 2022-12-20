@@ -44,7 +44,7 @@ end
 
 
 def foodwarning()
-    uri = URI.parse("https://megov.bayern.de/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged")
+    uri = URI.parse("https://lebensmittelwarnung.api.proxy.bund.dev/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged")
     header = {'Content-Type': 'application/json'}
     body = {
         food: {
