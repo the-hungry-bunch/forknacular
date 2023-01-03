@@ -1,9 +1,7 @@
 require 'sinatra'
+require './cli'
 
-get '/' do
-  'Was ganz anderes'
-end
-
-get '/woanders' do
-  'Hallo von woanders'
+get '/warning' do
+  output = foodwarning(params['amount'])
+  erb :index, :locals => {:warningTextFromAPI => output}
 end
