@@ -14,11 +14,9 @@ def foodwarning(amount)
         request.body = body.to_json
         response = http.request request # Net::HTTPResponse object
         responseJSON = JSON.parse(response.body)
-        titles = responseJSON.dig('response', 'docs').map {|w| w['title']}
-        warnings = responseJSON.dig('response', 'docs').map {|w| w['warning']}
-        
+        #require 'pry'; binding.pry
         responseJSON.dig('response', 'docs').each do |warning|
-            hash[warning['title']] = warning['warning']
+            hash[warning['title']] = [warning['warning'], warning['product']['imageUrls'].first]
         end
     end
     hash

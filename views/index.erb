@@ -1,6 +1,12 @@
 <html>
     <body>
         <h1>Warning</h1>
-        <%= warningTextFromAPI %> 
+        <% warningTextFromAPI.each do |key, value| %> 
+            <p> 
+            <%= key %>
+            <img src="<%= value[1] %>" alt="Italian Trulli" width="500" height="600">
+            <%= value[0] %>
+            </p>
+        <% end %> 
     </body>
 </html>
