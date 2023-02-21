@@ -1,12 +1,24 @@
 <html>
     <body>
-        <h1>Warning</h1>
-        <% warningTextFromAPI.each do |key, value| %> 
-            <p> 
-            <%= key %>
-            <img src="<%= value[1] %>" alt="Italian Trulli" width="500" height="600">
-            <%= value[0] %>
-            </p>
-        <% end %> 
+        <h1>Produktwarnung:</h1>
+        <table border = '1'>
+        <thead>
+            <tr>
+                <th colspan="2">Produkt</th>
+                <th colspan="2">Warnung</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% warningTextFromAPI.each do |key, value| %> 
+                <p>
+                <tr> 
+                <td><%= key %></td>
+                <td><img src="<%= value[1] %>" alt="Italian Trulli" width="auto" height="100"></td>
+                <td><%= value[0] %></td>
+                </p>
+                </tr>
+            <% end %>
+        </tbody>
+        </table> 
     </body>
 </html>
