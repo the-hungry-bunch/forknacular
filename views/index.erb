@@ -1,24 +1,22 @@
 <html>
     <body>
-        <h1>Produktwarnung:</h1>
         <table border = '1'>
-        <thead>
+            <thead>
             <tr>
-                <th colspan="2">Produkt</th>
-                <th colspan="2">Warnung</th>
+                <th style='font-family:"Courier New", Courier, monospace; font-size:50px' colspan="3">Achtung! Achtung! Achtung!</th>
             </tr>
-        </thead>
-        <tbody>
-            <% warningTextFromAPI.each do |key, value| %> 
-                <p>
-                <tr> 
-                <td><%= key %></td>
-                <td><img src="<%= value[1] %>" alt="Italian Trulli" width="auto" height="100"></td>
+            </thead>
+            <tr>
+                <th scope="col" colspan="2" style='font-family:"Courier New", Courier, monospace; font-size:20px'>Produkt</th>
+                <th scope="col" style='font-family:"Courier New", Courier, monospace; font-size:20px'>Warnung</th>
+            </tr>
+            <% warningTextFromAPI.each do |key, value| %>
+            <tr>
+                <th scope="row" style="background-color: #CEFCF8"><%= key %></th>
+                <td><img src="<%= value[1] %>" alt="Italian Trulli" border="2" width="100"></td>
                 <td><%= value[0] %></td>
-                </p>
-                </tr>
-            <% end %>
-        </tbody>
-        </table> 
+            </tr>
+            <% end %> 
+        </table>
     </body>
 </html>
