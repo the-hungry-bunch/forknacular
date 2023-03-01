@@ -16,7 +16,7 @@ def foodwarning(amount)
         responseJSON = JSON.parse(response.body)
         #require 'pry'; binding.pry
         responseJSON.dig('response', 'docs').each do |warning|
-            hash[warning['title']] = [warning['warning'], warning['product']['imageUrls'].first]
+            hash[warning['title']] = [warning['warning'], warning['product']['imageUrls'].first, warning['link']]
         end
     end
     hash
