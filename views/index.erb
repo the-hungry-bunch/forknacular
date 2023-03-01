@@ -1,6 +1,24 @@
 <html>
     <body>
-        <h1>Warning</h1>
-        <%= warningTextFromAPI %> 
+        <table border = '1'>
+            <thead>
+            <tr>
+                <th style='font-family:"Courier New", Courier, monospace; font-size:50px' colspan="3">Achtung! Achtung! Achtung!</th>
+            </tr>
+            </thead>
+            <tr>
+                <th scope="col" colspan="2" style='font-family:"Courier New", Courier, monospace; font-size:20px'>Produkt</th>
+                <th scope="col" style='font-family:"Courier New", Courier, monospace; font-size:20px'>Warnung</th>
+                <th scope="col" style='font-family:"Courier New", Courier, monospace; font-size:20px'>Link</th>
+            </tr>
+            <% warningTextFromAPI.each do |key, value| %>
+            <tr>
+                <th scope="row" style="background-color: #CEFCF8"><%= key %></th>
+                <td><img src="<%= value[1] %>" alt="Italian Trulli" border="2" width="100"></td>
+                <td><%= value[0] %></td>
+                <td><a href="<%= value[2] %>"> <%= value[2] %></td></a></td>
+            </tr>
+            <% end %> 
+        </table>
     </body>
 </html>

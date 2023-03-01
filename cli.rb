@@ -4,6 +4,7 @@ require 'uri'
 
 def foodwarning(amount)
     uri = URI('https://megov.bayern.de/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged')
+    hash = {}
 
     Net::HTTP.start(uri.host, uri.port, :use_ssl => true) do |http|
         request = Net::HTTP::Post.new uri
@@ -12,6 +13,11 @@ def foodwarning(amount)
         body = {"food": {"rows": amount, "sort": "publishedDate desc, title asc", "start": 0, "fq": ["publishedDate > 1630067654000"]}}
         request.body = body.to_json
         response = http.request request # Net::HTTPResponse object
-        JSON.parse(response.body).dig('response', 'docs').map {|w| w['warning']}
+        responseJSON = JSON.parse(response.body)
+        #require 'pry'; binding.pry
+        responseJSON.dig('response', 'docs').each do |warning|
+            hash[warning['title']] = [warning['warning'], warning['product']['imageUrls'].first, warning['link']]
+        end
     end
+    hash
 end
