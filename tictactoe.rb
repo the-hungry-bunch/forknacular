@@ -1,12 +1,30 @@
 arr = [[nil, nil, nil], [nil ,nil ,nil ], [nil, nil, nil]]
 
+def field(arr)
+    puts '______'
+    arr.each do |row|
+        string = ''
+        row.each do |element|
+            if element == nil
+                string = string + ' '
+            else
+                string = string + element
+            end   
+            string = string + '|'  
+        end
+        puts string
+        puts '______'
+    end
+end
+
 def free?(arr, row, column)
     arr[row-1][column-1] == nil
 end
 
-def playerRound() 
+def playerRound(arr) 
     free = true
-
+    row = -1
+    column = -1
     while free
         while row <= 0 || row > 3 do
             puts "TicTacToe Game: Bitte horizontale Koordinate eintragen (1 bis 3)"
@@ -14,7 +32,7 @@ def playerRound()
         end
 
         puts "TicTacToe Game: Bitte verticale Koordinate eintragen (1 bis 3)"
-        column = gets.chomp.to_i -1
+        column = gets.chomp.to_i
 
         while column <= 0 || column > 3 do
             puts "Bitte eine Zahl von 1-3"
@@ -31,48 +49,51 @@ def playerRound()
     end
 end
 
-def computerRound()
+def computerRound(arr)
     row, column  = arr.flatten.index(nil).divmod(3)
     arr[row][column] = 'X'
 end
 
-def winner
-    gameover? = false
+def check_winner(arr)
+    gameover = false
     arr.each do |row|
-        if row.all? { |cell| cell == 'X' }
-            winner = 'computer'
-            gameover = true
-        elsif row.all? { |cell| cell == 'O' }
-            winner = 'player'
+        if row.all? { |cell| cell == 'X'} || row.all? { |cell| cell == 'O'}
             gameover = true
         end 
     end
 
     arr.transpose.each do |column|
-        if column.all? { |cell| cell == 'X' }
-            winner = 'computer'
-            gameover = true
-        elsif column.all? { |cell| cell == 'O' }
-            winner = 'player'
+        if column.all? { |cell| cell == 'X'} || column.all? { |cell| cell == 'O'}
             gameover = true
         end 
     end
     
     #diagonals check
-    arr[0][0] == arr[1][1] == arr[2][2] == 'X'
-    arr[0][0] == arr[1][1] == arr[2][2] == 'O'
-    arr[0][2] == arr[1][1] == arr[2][0] == 'X'
-    arr[0][2] == arr[1][1] == arr[2][0] == 'O'
+    if (arr[0][0] == arr[1][1] && arr[1][1] == arr[2][2]) || 
+       (arr[0][2] == arr[1][1] && arr[1][1] == arr[2][0])
+       gameover = true
+    end
 
+    gameover
 end
+
 
 while true
-    playerRound()
-    computerRound()
+    field(arr)
+    playerRound(arr)
+    field(arr)
+    if check_winner(arr)
+        puts "Yay! Du (Player) hast gewonnen!"
+        break
+    end
+    computerRound(arr)
+    if check_winner(arr)
+        field(arr)
+        puts "Yay! Du (PC) hast gewonnen!"
+        break
+    end
 end
 
 
-#who wins?
-#how does the game field looks like?
 
 
