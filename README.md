@@ -17,3 +17,22 @@ Start up the webserver with:
 ```Shell
 docker-compose up development
 ```
+
+Run tests - Option 1:
+```Shell
+docker-compose build #optional
+docker-compose run --rm development sh #enter container
+rspec
+```
+
+Run tests - Option 2:
+```Shell
+docker-compose build #optional
+docker-compose run --rm development rspec
+```
+
+Exit container
+```Shell
+exit
+ctrl + d
+```
