@@ -1,5 +1,19 @@
 require_relative '../tictactoe'
 
+RSpec.shared_examples 'a winner was detected' do |field|
+    it 'detects winner' do
+        actual = subject.check_winner(field) #act!
+        expect(actual).to eq true #assert!
+    end
+end
+
+RSpec.shared_examples 'no winner was detected' do |field|
+    it 'detects no winner' do
+        actual = subject.check_winner(field) #act!
+        expect(actual).to eq false #assert!
+    end
+end
+
 RSpec.describe TicTacToe do
     describe "#free?" do
         context "start with empty fields" do
@@ -36,18 +50,39 @@ RSpec.describe TicTacToe do
     end
     describe "#check_winner" do
         context "with a winner" do
-            let(:field) { [['X', 'X', 'X'], ['O', 'O', nil], [nil, nil, nil]] } #arrange! (Triple 'A' / AAA)
-            it "identifies a game over" do
-                actual = subject.check_winner(field) #act!
-                expect(actual).to eq true #assert!
+            it_behaves_like 'a winner was detected', [['X', 'X', 'X'], ['O', 'O', nil], [nil, nil, nil]] #arrange! (Triple 'A' / AAA)
+            it_behaves_like 'a winner was detected', [['X', 'X', 'X'], ['O', 'O', 'O'], [nil, nil, nil]] #arrange! (Triple 'A' / AAA)
+            it_behaves_like 'a winner was detected', [['X', 'X', 'X'], ['X', 'X', 'X'], ['X', 'X', 'X']] #arrange! (Triple 'A' / AAA)
+            it_behaves_like 'a winner was detected', [['X', 'X', nil], ['O', 'O', 'O'], [nil, nil, nil]] #arrange! (Triple 'A' / AAA)
+        end
+
+        context "without a winner" do
+            it_behaves_like 'no winner was detected', [[nil, nil, nil], [nil ,nil ,nil ], [nil, nil, nil]] #arrange! (Triple 'A' / AAA)
+            it_behaves_like 'no winner was detected', [['X', 'X', 'O'], ['O','O','X' ], ['X','O','X']] #arrange! (Triple 'A' / AAA)
+            it_behaves_like 'no winner was detected', [['C', 'C', 'C'], ['O','O','X' ], ['X','O','X']] #arrange! (Triple 'A' / AAA)
+        end
+    end
+    describe "#playerRound" do
+        context "valid player round" do
+            let(:field) { [[nil, nil, nil], [nil ,nil ,nil ], [nil, nil, nil]] }
+            before do 
+                allow_any_instance_of(Kernel).to receive(:gets).and_return('2')
+                allow_any_instance_of(Kernel).to receive(:puts).and_return(nil) #removed puts output to prettify console log
+            end
+            it "chooses an empty field" do 
+                subject.playerRound(field)
+                expect(field[1][1]).to eq 'O'
             end
         end
-        context "without a winner" do
-            let(:field) { [[nil, 'X', nil], [nil, nil, nil], [nil, nil, nil]] } #arrange! (Triple 'A' / AAA)
-            it "identifies NO game over" do
-                actual = subject.check_winner(field) #act!
-                expect(actual).to eq false #assert!
+        context "wrong player input" do
+            let(:field) { [[nil, nil, nil], [nil ,nil ,nil ], [nil, nil, nil]] }
+            before do 
+                allow_any_instance_of(Kernel).to receive(:gets).and_return('4','2')
+            end
+            it "notifies player about invalid input" do 
+                expect{ subject.playerRound(field) }.to output(/TicTacToe Game: Bitte horizontale Koordinate eintragen \(1 bis 3\)\nTicTacToe Game: Bitte horizontale Koordinate eintragen \(1 bis 3\)/).to_stdout
             end
         end
     end
 end
+
