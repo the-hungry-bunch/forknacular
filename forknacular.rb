@@ -11,5 +11,6 @@ get '/' do
 end
 
 get '/tictactoe' do
-  "Tictactoe"
+  #output = ??? was schreiben wir hier???
+  erb :tictactoe
 end

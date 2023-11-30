@@ -1,0 +1,52 @@
+<html>
+  <body>
+    <h1>Have fun!</h1>
+    <form action="" method="get" class="form-example">
+      <table border = '1'>
+        <thead>
+        <tr>
+            <th style='font-family:"Courier New", Courier, monospace; font-size:50px' colspan="3">Tictactoe</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <!--was schreiben wir hier????-->
+              <% warningTextFromAPI.each do |key, value| %>
+              <tr>
+                  <th scope="row" style="background-color: #CEFCF8"><%= key %></th>
+                  <td><img src="<%= value[1] %>" alt="Italian Trulli" border="2" width="100"></td>
+                  <td><%= value[0] %></td>
+                  <td><a href="<%= value[2] %>"> <%= value[2] %></td></a></td>
+              </tr>
+              <% end %> 
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="form-example">
+        <input type="submit" value="submit!" />
+      </div>
+    </form>
+  </body>
+</html>
