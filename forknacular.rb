@@ -11,6 +11,6 @@ get '/' do
 end
 
 get '/tictactoe' do
-  #output = ??? was schreiben wir hier???
-  erb :tictactoe
+  output = params['field'] || [["a","b","c"],["1",nil,"3"],[nil,"5",nil]]
+  erb :tictactoe, locals: {field: output}
 end

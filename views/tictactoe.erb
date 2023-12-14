@@ -9,44 +9,23 @@
         </tr>
         </thead>
         <tbody>
+          <!--was schreiben wir hier???? es ist immer noch nicht optimal! denkt mal drüber nach! vllt mit einem submit button-->
+          <% field.each do |row| %>
           <tr>
-            <td>
-              <!--was schreiben wir hier????-->
-              <% warningTextFromAPI.each do |key, value| %>
-              <tr>
-                  <th scope="row" style="background-color: #CEFCF8"><%= key %></th>
-                  <td><img src="<%= value[1] %>" alt="Italian Trulli" border="2" width="100"></td>
-                  <td><%= value[0] %></td>
-                  <td><a href="<%= value[2] %>"> <%= value[2] %></td></a></td>
-              </tr>
-              <% end %> 
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
+            <% row.each do |cell| %>
+              <td>
+                <div class="form-example"></div>
+                  <input type="submit" value=<%= cell %> > 
+                  </input>
+                  <input type="text" value=<%= cell %> > 
+                </input>
+                </div>
+              </td>
+            <% end %> 
           </tr>
-          <tr>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-          </tr>
+          <% end %> 
         </tbody>
       </table>
-      <div class="form-example">
-        <input type="submit" value="submit!" />
-      </div>
     </form>
   </body>
 </html>
