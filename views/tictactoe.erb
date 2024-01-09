@@ -1,7 +1,7 @@
 <html>
   <body>
     <h1>Have fun!</h1>
-    <form action="" method="get" class="form-example">
+    <form action="" method="post" class="form-example">
       <table border = '1'>
         <thead>
         <tr>
@@ -10,14 +10,14 @@
         </thead>
         <tbody>
           <!--was schreiben wir hier???? es ist immer noch nicht optimal! denkt mal drüber nach! vllt mit einem submit button-->
-          <% field.each do |row| %>
+          <% field.each_with_index do |row, row_index| %>
           <tr>
-            <% row.each do |cell| %>
+            <% row.each_with_index do |cell, column_index| %>
               <td>
                 <div class="form-example"></div>
                   <input type="submit" value=<%= cell %> > 
                   </input>
-                  <input type="text" value=<%= cell %> > 
+                  <input type="text" name=<%= row_index.to_s + column_index.to_s %> value=<%= cell %> > 
                 </input>
                 </div>
               </td>
