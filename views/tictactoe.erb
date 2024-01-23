@@ -17,8 +17,10 @@
                 <div class="form-example"></div>
                   <input type="submit" value=<%= cell %> > 
                   </input>
-                  <input type="text" name=<%= row_index.to_s + column_index.to_s %> value=<%= cell %> > 
-                </input>
+                  <input type="hidden" id=<%= "before_" + row_index.to_s + column_index.to_s %> name=<%= "before_" + row_index.to_s + column_index.to_s %> value=<%= cell %> > 
+                  </input>
+                  <input type="text" id=<%= row_index.to_s + column_index.to_s %> name=<%= row_index.to_s + column_index.to_s %> value=<%= cell %> > 
+                  </input>
                 </div>
               </td>
             <% end %> 
