@@ -95,7 +95,16 @@ class TicTacToe
         end
     end
 
+    def valid?(before, after)
+        change = []
+        before.zip(after) do |cellB, cellA| 
+            if cellA != cellB 
+                change << cellA
+            end
+        end
+        change.length == 1
+            # "Falscher Spielzug! Zu viele Züge"
+            # "Kein Spielzug gemacht. Bitte Spielzug einreichen und das Formular abschicken mit Stempel und Unterschrift!"
+    end
+
 end
-
-
-
