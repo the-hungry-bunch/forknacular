@@ -1,5 +1,6 @@
 require 'sinatra'
 require './cli'
+require './tictactoe'
 
 get '/warning' do
   output = foodwarning(params['amount'])
@@ -27,7 +28,7 @@ post '/tictactoe' do
     end
   end
 
-  valid?(before,after) ? erb(:tictactoe, locals: {field: after}) : erb(:tictactoe, locals: {field: before})
+  TicTacToe.valid?(before,after) ? erb(:tictactoe, locals: {field: after}) : erb(:tictactoe, locals: {field: before})
  
 end
 

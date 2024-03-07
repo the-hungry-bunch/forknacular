@@ -95,7 +95,7 @@ class TicTacToe
         end
     end
 
-    def valid?(before, after)
+    def self.valid?(before, after)
         change = []
         before.zip(after) do |cellB, cellA| 
             if cellA != cellB 
