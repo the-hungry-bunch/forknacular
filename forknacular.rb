@@ -17,7 +17,6 @@ get '/tictactoe' do
 end
 
 post '/tictactoe' do
-  require 'pry';  binding.pry
   before = {}
   after = {}
   params.each_key do |key|
@@ -27,8 +26,27 @@ post '/tictactoe' do
       after[key] = params[key]
     end
   end
+  #require 'pry';  binding.pry
 
-  TicTacToe.valid?(before,after) ? erb(:tictactoe, locals: {field: after}) : erb(:tictactoe, locals: {field: before})
+  before_arr = [[],[],[]]
+  after_arr = [[],[],[]]
+
+  before.each do |key, value|
+    key = key.delete_prefix("before_") 
+    row = key[0].to_i
+    column = key[1].to_i
+    before_arr[row][column] = value
+  end
+
+  after.each do |key, value|
+    key = key.delete_prefix("before_") 
+    row = key[0].to_i
+    column = key[1].to_i
+    after_arr[row][column] = value
+  end
+
+  #to be checked!!!! is valid wirklich valid?
+  TicTacToe.valid?(before,after) ? erb(:tictactoe, locals: {field: after_arr}) : erb(:tictactoe, locals: {field: before_arr})
  
 end
 
