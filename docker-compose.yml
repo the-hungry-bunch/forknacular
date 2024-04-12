@@ -1,10 +1,13 @@
-version: "3.8"
-
 services:
   development:
     build: .
     stdin_open: true
     tty: true
+    develop:
+      watch:
+        - action: rebuild
+          path: "./"
+          target: "./forknacular"
     ports:
       - "9292:9292"
     volumes:
