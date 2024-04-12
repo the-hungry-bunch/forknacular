@@ -18,6 +18,11 @@ Start up the webserver with:
 docker compose up development
 ```
 
+For development purposes it is recommended to start the webserver as follows:
+```Shell
+docker compose watch
+```
+
 Run tests - Option 1:
 ```Shell
 docker compose build #optional
