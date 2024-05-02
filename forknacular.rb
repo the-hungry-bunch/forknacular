@@ -45,8 +45,16 @@ post '/tictactoe' do
     after_arr[row][column] = value
   end
 
-  #to be checked!!!! is valid wirklich valid?
-  TicTacToe.valid?(before,after) ? erb(:tictactoe, locals: {field: after_arr}) : erb(:tictactoe, locals: {field: before_arr})
+  if !TicTacToe.valid?(before,after)
+    erb(:tictactoe, locals: {field: before_arr})
+  end
+
+  #Changed ternary to conditional. Don't know if it's working...
+  ttt = TicTacToe.new
+  ttt.computerRound(after)
+  erb(:tictactoe, locals: {field: after_arr})
+
+  #TicTacToe.valid?(before,after) ? erb(:tictactoe, locals: {field: after_arr}) : erb(:tictactoe, locals: {field: before_arr})
  
 end
 
