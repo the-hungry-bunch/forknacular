@@ -98,13 +98,11 @@ class TicTacToe
     def self.valid?(before, after)
         change = []
         before.zip(after) do |cellB, cellA| 
-            if cellA != cellB 
-                change << cellA
+            if cellA.last != cellB.last 
+                change << cellA.last
             end
         end
-        change.length == 1
-            # "Falscher Spielzug! Zu viele Züge"
-            # "Kein Spielzug gemacht. Bitte Spielzug einreichen und das Formular abschicken mit Stempel und Unterschrift!"
+        change.length == 1 && change[0] == "O"
     end
 
 end

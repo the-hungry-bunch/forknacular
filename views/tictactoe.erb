@@ -15,7 +15,7 @@
             <% row.each_with_index do |cell, column_index| %>
               <td>
                 <div class="form-example"></div>
-                  <input type="submit" value=<%= cell %> > 
+                  <input type="submit" value="O"> 
                   </input>
                   <input type="hidden" id=<%= "before_" + row_index.to_s + column_index.to_s %> name=<%= "before_" + row_index.to_s + column_index.to_s %> value=<%= cell %> > 
                   </input>

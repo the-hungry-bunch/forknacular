@@ -12,7 +12,7 @@ get '/' do
 end
 
 get '/tictactoe' do
-  output = params['field'] || [["a","b","c"],["1",nil,"3"],[nil,"5",nil]]
+  output = params['field'] || [[nil,nil,nil],[nil,nil,nil],[nil,nil,nil]]
   erb :tictactoe, locals: {field: output}
 end
 
