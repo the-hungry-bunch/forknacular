@@ -39,7 +39,6 @@ post '/tictactoe' do
   end
 
   after.each do |key, value|
-    key = key.delete_prefix("before_") 
     row = key[0].to_i
     column = key[1].to_i
     after_arr[row][column] = value
@@ -51,7 +50,8 @@ post '/tictactoe' do
 
   #Changed ternary to conditional. Don't know if it's working...
   ttt = TicTacToe.new
-  ttt.computerRound(after)
+
+  ttt.computerRound(after_arr)
   erb(:tictactoe, locals: {field: after_arr})
 
   #TicTacToe.valid?(before,after) ? erb(:tictactoe, locals: {field: after_arr}) : erb(:tictactoe, locals: {field: before_arr})
