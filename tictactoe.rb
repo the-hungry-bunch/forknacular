@@ -49,6 +49,7 @@ class TicTacToe
     end
 
     def computerRound(arr)
+        #require 'pry'; binding.pry
         row, column  = arr.flatten.index(nil).divmod(3)
         arr[row][column] = 'X'
     end
@@ -99,7 +100,8 @@ class TicTacToe
         change = []
         before.zip(after) do |cellB, cellA| 
             if cellA.last != cellB.last
-                return false if !cellB.last.nil? 
+                #diese zeile - 104 - funktioniert nicht. why?
+                return false if cellB.last != ""
                 change << cellA.last
             end
         end
