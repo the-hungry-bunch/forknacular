@@ -36,3 +36,8 @@ Exit container
 exit
 ctrl + d
 ```
+
+Prettify git log
+```Shell
+git log --all --decorate --oneline --graph
+```
