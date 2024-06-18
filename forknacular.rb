@@ -54,10 +54,16 @@ post '/tictactoe' do
   if ttt.check_winner(after_arr)
     return "🥳"
   end
+
+  return "Gleichstand" if !after_arr.flatten.include?(nil)
+
   ttt.computerRound(after_arr)
   if ttt.check_winner(after_arr)
     return "😭"
   end
+
+  return "Gleichstand" if !after_arr.flatten.include?(nil)
+
   erb(:tictactoe, locals: {field: after_arr})
 
   #TicTacToe.valid?(before,after) ? erb(:tictactoe, locals: {field: after_arr}) : erb(:tictactoe, locals: {field: before_arr})
