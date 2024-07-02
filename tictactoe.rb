@@ -100,7 +100,7 @@ class TicTacToe
         change = []
         before.zip(after) do |cellB, cellA| 
             if cellA.last != cellB.last
-                #diese zeile - 104 - funktioniert nicht. why?
+                # only allow empty fields to be used
                 return false if cellB.last != ""
                 change << cellA.last
             end

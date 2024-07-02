@@ -4,7 +4,7 @@ require 'uri'
 
 def foodwarning(amount)
     uri = URI('https://megov.bayern.de/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged')
-    hash = {}
+    hash =  {}
 
     Net::HTTP.start(uri.host, uri.port, :use_ssl => true) do |http|
         request = Net::HTTP::Post.new uri

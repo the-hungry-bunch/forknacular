@@ -45,7 +45,7 @@ post '/tictactoe' do
   end
 
   if !TicTacToe.valid?(before,after)
-    erb(:tictactoe, locals: {field: before_arr})
+    return erb(:tictactoe, locals: {field: before_arr})
   end
 
   #Changed ternary to conditional. Don't know if it's working...
