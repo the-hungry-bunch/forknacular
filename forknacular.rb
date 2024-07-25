@@ -12,24 +12,29 @@ get '/' do
 end
 
 get '/tictactoe' do
-  output = params['field'] || [[nil,nil,nil],[nil,nil,nil],[nil,nil,nil]]
+  output = params['field'] || [['X',nil,nil],[nil,nil,nil],[nil,nil,nil]]
   erb :tictactoe, locals: {field: output}
 end
 
 post '/tictactoe' do
   before = {}
-  after = {}
+  turn_row = nil
+  turn_column = nil
+
   params.each_key do |key|
     if key.start_with?('before_')
       before[key] = params[key]
-    else
-      after[key] = params[key]
+      next
+    end
+
+    if key.start_with?('turn_')
+      key = key.delete_prefix('turn_')
+      turn_row = key[0].to_i
+      turn_column = key[1].to_i
     end
   end
-  #require 'pry';  binding.pry
 
   before_arr = [[],[],[]]
-  after_arr = [[],[],[]]
 
   before.each do |key, value|
     key = key.delete_prefix("before_") 
@@ -38,15 +43,13 @@ post '/tictactoe' do
     before_arr[row][column] = value == "" ? nil : value
   end
 
-  after.each do |key, value|
-    row = key[0].to_i
-    column = key[1].to_i
-    after_arr[row][column] = value == "" ? nil : value
-  end
-
-  if !TicTacToe.valid?(before,after)
+  #require 'pry'; binding.pry
+  if !TicTacToe.valid?(before_arr, turn_row, turn_column)
     return erb(:tictactoe, locals: {field: before_arr})
   end
+
+  after_arr = before_arr
+  after_arr[turn_row][turn_column] = 'O'
 
   #Changed ternary to conditional. Don't know if it's working...
   ttt = TicTacToe.new

@@ -1,27 +1,19 @@
 <html>
   <body>
-    <h1>Have fun!</h1>
-    <form action="" method="post" class="form-example">
+    <h1>Tictactoe</h1>
+    <h2>Have fun!</h2>
+    <form method="post">
       <table border = '1'>
-        <thead>
-        <tr>
-            <th style='font-family:"Courier New", Courier, monospace; font-size:50px' colspan="3">Tictactoe</th>
-        </tr>
-        </thead>
         <tbody>
           <!--was schreiben wir hier???? es ist immer noch nicht optimal! denkt mal drüber nach! vllt mit einem submit button-->
           <% field.each_with_index do |row, row_index| %>
           <tr>
             <% row.each_with_index do |cell, column_index| %>
               <td>
-                <div class="form-example"></div>
-                  <input type="submit" value="O"> 
+                <input type="submit" name=<%= "turn_" + row_index.to_s + column_index.to_s %> value=<%= cell %> >
+                </input>
+                <input type="hidden" id=<%= "before_" + row_index.to_s + column_index.to_s %> name=<%= "before_" + row_index.to_s + column_index.to_s %> value=<%= cell %> >
                   </input>
-                  <input type="hidden" id=<%= "before_" + row_index.to_s + column_index.to_s %> name=<%= "before_" + row_index.to_s + column_index.to_s %> value=<%= cell %> > 
-                  </input>
-                  <input type="text" id=<%= row_index.to_s + column_index.to_s %> name=<%= row_index.to_s + column_index.to_s %> value=<%= cell %> > 
-                  </input>
-                </div>
               </td>
             <% end %> 
           </tr>

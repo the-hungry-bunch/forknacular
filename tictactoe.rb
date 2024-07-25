@@ -96,16 +96,8 @@ class TicTacToe
         end
     end
 
-    def self.valid?(before, after)
-        change = []
-        before.zip(after) do |cellB, cellA| 
-            if cellA.last != cellB.last
-                # only allow empty fields to be used
-                return false if cellB.last != ""
-                change << cellA.last
-            end
-        end
-        change.length == 1 && change[0] == "O"
+    def self.valid?(before, turn_row, turn_column)
+        before[turn_row][turn_column].nil?
     end
 
 end
