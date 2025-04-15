@@ -95,7 +95,7 @@ class TicTacToe
         end
     end
 
+    def self.valid?(before, coordinate)
+        before["before_"+coordinate] = ""
+    end
 end
-
-
-

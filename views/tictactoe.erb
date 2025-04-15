@@ -1,0 +1,35 @@
+<html>
+  <body>
+    <h1>Have fun!</h1>
+    <form action="" method="post" class="form-example">
+      <table border = '1'>
+        <thead>
+        <tr>
+          <th style='font-family:"Courier New", Courier, monospace; font-size:50px' colspan="3">Tictactoe</th>
+        </tr>
+        </thead>
+        <tbody>
+          <% field.each_with_index do |row, row_index| %>
+          <tr>
+            <% row.each_with_index do |cell, column_index| %>
+              <td>
+                <div class="form-example"></div>
+                  <% if cell == nil %>
+                    <input type="radio" id=<%= row_index.to_s + column_index.to_s %> name="cell" value=<%= row_index.to_s + column_index.to_s %> />
+                  <% else %>
+                    <%= cell %>
+                  <% end %>
+                  <input type="hidden" id=<%= "before_" + row_index.to_s + column_index.to_s %> name=<%= "before_" + row_index.to_s + column_index.to_s %> value=<%= cell %> > 
+                  </input>
+                </div>
+              </td>
+            <% end %> 
+          </tr>
+          <% end %> 
+        </tbody>
+      </table>
+      <input type="submit" value="Submit move"> 
+      </input>
+    </form>
+  </body>
+</html>
