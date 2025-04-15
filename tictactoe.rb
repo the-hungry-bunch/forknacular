@@ -49,7 +49,7 @@ class TicTacToe
     end
 
     def computerRound(arr)
-        row, column  = arr.flatten.index(nil).divmod(3)
+        row, column = arr.flatten.index(nil).divmod(3)
         arr[row][column] = 'X'
     end
 
